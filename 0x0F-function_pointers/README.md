@@ -6,3 +6,4 @@ Task 1. Executes a function given as a parameter on each element of an array.
 
 Task 2. Searches for an integer.
 
+Task 3. Write a program that performs simple operations.
