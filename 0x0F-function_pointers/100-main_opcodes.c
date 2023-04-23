@@ -30,13 +30,11 @@ int main(int argc, char *argv[])
 
 	for (i = 0 ; i < atoi(argv[1]) ; i++)
 	{
-		if (i == atoi(argv[1]) - 1)
-		{
-			printf("%.2hhx\n", list[i]);
-			return (0);
-		}
-		printf("%02hhx", list[i]);
+		printf("%02x", list[i] & 0xFF);
+		if (i != atoi(argv[1] - 1))
+			printf(" ");
 	}
+	printf("\n");
 
 	return (0);
 }
