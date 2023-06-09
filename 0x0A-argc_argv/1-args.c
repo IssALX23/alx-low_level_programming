@@ -7,7 +7,7 @@
  *
  * Description: Write a program that prints
  *		the number of arguments passed into it
- * 
+ *
  * Return: 0 when success
  */
 int main(int argc, char *argv[])
