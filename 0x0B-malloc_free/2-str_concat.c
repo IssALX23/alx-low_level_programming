@@ -53,6 +53,44 @@ char *str_concat(char *s1, char *s2)
 		}
 		return (ptr);
 	}
+	else if (s1 && !s2)
+	{
+		len1 = get_length(s1);
+		ptr = malloc(len1 * sizeof(char) +1);
+
+		if(ptr)
+		{
+			while (c1 < len1)
+			{
+				ptr[c1] = s1[c1];
+				c1++;
+			}
+			ptr[c1] = '\0';
+		}
+		return (ptr);
+	}
+	else if (!s1 && s2)
+	{
+		len2 = get_length(s2);
+		ptr = malloc(len2 * sizeof(char) +1);
+
+		if(ptr)
+		{
+			while (c1 < len2)
+			{
+				ptr[c1] = s2[c1];
+				c1++;
+			}
+			ptr[c1] = '\0';
+		}
+		return (ptr);
+	}
+	else if (!s1 && !s2)
+	{
+		ptr = malloc(sizeof(char));
+		ptr[c1] = '\0';
+		return (ptr);
+	}
 	else
 		return (NULL);
 }
