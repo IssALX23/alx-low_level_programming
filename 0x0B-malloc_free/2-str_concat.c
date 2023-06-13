@@ -33,7 +33,7 @@ char *str_concat(char *s1, char *s2)
 		len1 = get_length(s1);
 	if (s2 && s2[len2] != '\0')
 		len2 = get_length(s2);
-	ptr = malloc(sizeof(char) + (len1 + len2) + 1);
+	ptr = malloc(sizeof(char) * (len1 + len2) + 1);
 	if (ptr)
 	{
 		if (s1 && !s2)
