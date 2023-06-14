@@ -25,5 +25,13 @@ int **alloc_grid(int width, int height)
 		return (pptr);
 	}
 	else
+	{
+		for (row = 0 ; row < height ; row++)
+		{
+			for (col = 0 ; col < width ; col++)
+				free(pptr[col]);
+			free(pptr[row]);
+		}
 		return (NULL);
+	}
 }
