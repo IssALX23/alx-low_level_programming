@@ -32,12 +32,9 @@ char *string_nconcat(char *s1, char *s2, unsigned int n)
 		if (n > b)
 			n = b;
 		for (j = 0 ; j < n ; j++)
-		{
-			str[i] = s2[j];
-			i++;
-		}
+			str[i + j] = s2[j];
 
-		str[i] = '\0';
+		str[a + n] = '\0';
 		return (str);
 	}
 	else
