@@ -16,4 +16,6 @@ int is_prime_number(int n);
 
 int check_palindrome(int i, int j, char *s);
 int is_palindrome(char *s);
+int get_length(char *s);
+
 #endif
