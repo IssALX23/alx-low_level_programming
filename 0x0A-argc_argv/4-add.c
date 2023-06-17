@@ -1,5 +1,24 @@
 #include "main.h"
-/**main - entry point
+/**
+ * is_number - check if number is digit or not
+ * @str: string
+ *
+ * Return: 1 if number and 0 if not
+ */
+int is_number(char *str)
+{
+	int i = 0;
+
+	while (str[i] != '\0')
+	{
+		if (!isdigit(str[i]))
+			return (0);
+		i++;
+	}
+	return (1);
+}
+/**
+ * main - entry point
  * @argc: counter of arguments
  * @argv: array of arguments
  *
@@ -9,7 +28,7 @@
  */
 int main(int argc, char *argv[])
 {
-	int counter = 0, result = 0;
+	int counter = 1, result = 0;
 
 	if (argc == 1)
 	{
@@ -17,13 +36,14 @@ int main(int argc, char *argv[])
 		return (1);
 	}
 
-	while (counter < argc)
+	while (argv[counter])
 	{
-		if (*argv[counter] < '0' || *argv[counter] > '9')
+		if (is_number(argv[counter]) == 0)
 		{
 			printf("Error\n");
 			return (1);
 		}
+
 		result += atoi(argv[counter]);
 		counter++;
 	}
