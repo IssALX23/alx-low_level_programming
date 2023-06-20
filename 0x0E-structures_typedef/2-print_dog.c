@@ -9,11 +9,16 @@
  */
 void print_dog(struct dog *d)
 {
-	char *a = d->name, *b = d->owner;
-	float c = d->age;
+	char *a, *b;
+	float c;
 
 	if (d == NULL)
 		return;
+
+	a = d->name;
+	b = d->owner;
+	c = d->age;
+
 	if (!d->name)
 		printf("Name: (nil)\n");
 	else
