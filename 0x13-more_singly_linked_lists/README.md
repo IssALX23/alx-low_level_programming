@@ -8,4 +8,5 @@ Task 2 Write a function that adds a new node at the beginning of a listint_t lis
 
 Task 3 Write a function that adds a new node at the end of a listint_t list
 
+Task 4 Write a function that frees a listint_t list
 
