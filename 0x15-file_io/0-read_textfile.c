@@ -22,12 +22,18 @@ ssize_t read_textfile(const char *filename, size_t letters)
 	/* store the number of bytes read from file */
 	str = read(fp, &buffer[0], letters);
 	if (str == -1)
+	{
+		close(fp);
 		return (-1);
+	}
 
 	/* write the contents of buffer to the POSIX standard output */
 	strw = write(STDOUT_FILENO, &buffer[0], str);
 	if (strw == -1)
+	{
+		close(fp);
 		return (-1);
+	}
 
 	close(fp);
 	return (str);
