@@ -9,7 +9,7 @@
 ssize_t read_textfile(const char *filename, size_t letters)
 {
 	int fp;
-	ssize_t str;
+	ssize_t str, strw;
 	char buffer[1024];
 
 	if (!filename || !letters)
@@ -22,7 +22,9 @@ ssize_t read_textfile(const char *filename, size_t letters)
 	/* store the number of bytes read from file */
 	str = read(fp, &buffer[0], letters);
 	/* write the contents of buffer to the POSIX standard output */
-	write(STDOUT_FILENO, &buffer[0], str);
+	strw = write(STDOUT_FILENO, &buffer[0], str);
+	if (!strw)
+		return (0);
 
 	close(fp);
 	return (str);
