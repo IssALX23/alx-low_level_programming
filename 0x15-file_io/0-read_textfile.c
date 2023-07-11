@@ -10,7 +10,7 @@ ssize_t read_textfile(const char *filename, size_t letters)
 {
 	int fp;
 	ssize_t str, strw;
-	char buffer[1024];
+	char *buffer;
 
 	if (!filename || !letters)
 		return (0);
@@ -19,11 +19,20 @@ ssize_t read_textfile(const char *filename, size_t letters)
 	if (fp == -1)
 		return (0);
 
+	/*  stores the variable that is supposed to be taken */
+	buffer = (char *)malloc(sizeof(char) * (letters + 1));
+	if (!buffer)
+	{
+		close(fp);
+		return (0);
+	}
+
 	/* store the number of bytes read from file */
 	str = read(fp, &buffer[0], letters);
 	if (str == -1)
 	{
 		close(fp);
+		free(buffer);
 		return (-1);
 	}
 
@@ -32,9 +41,11 @@ ssize_t read_textfile(const char *filename, size_t letters)
 	if (strw == -1)
 	{
 		close(fp);
+		free(buffer);
 		return (-1);
 	}
 
 	close(fp);
+	free(buffer);
 	return (str);
 }
