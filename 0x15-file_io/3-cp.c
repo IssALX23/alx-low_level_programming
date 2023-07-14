@@ -29,14 +29,13 @@ int main(int ac, char *av[])
 		dprintf(STDERR_FILENO, "Error: Can't write to %s\n", av[2]);
 		exit(99);
 	}
-	f1r = read(fp1, buffer, sizeof(buffer));
-	if (f1r  == -1)
+	while ((f1r = read(fp1, buffer, sizeof(buffer))) > 0)
 	{
-		dprintf(STDERR_FILENO, "Error: Can't read from file %s\n", av[1]);
-		exit(98);
-	}
-	while (f1r > 0)
-	{
+		if (f1r  == -1)
+		{
+			dprintf(STDERR_FILENO, "Error: Can't read from file %s\n", av[1]);
+			exit(98);
+		}
 		f2w = write(fp2, buffer, f1r);
 		if (f2w == -1)
 		{
