@@ -8,7 +8,7 @@
 int main(int ac, char *av[])
 {
 	int w_err, fp1, fp2, f1r, f2w, fc1, fc2;
-	char buffer[1024];
+	char buffer[1025];
 
 	if (ac != 3)/* if wrong number of arguments */
 	{
@@ -29,19 +29,19 @@ int main(int ac, char *av[])
 		dprintf(STDERR_FILENO, "Error: Can't write to %s\n", av[2]);
 		exit(99);
 	}
-	while ((f1r = read(fp1, buffer, 1024)) > 0)
+	while ((f1r = read(fp1, buffer, sizeof(buffer))) > 0)
 	{
-		f2w = write(fp2, buffer, 1024);
+		if (f1r  == -1)
+		{
+			dprintf(STDERR_FILENO, "Error: Can't read from file %s\n", av[1]);
+			exit(98);
+		}
+		f2w = write(fp2, buffer, f1r);
 		if (f2w == -1)
 		{
 			dprintf(STDERR_FILENO, "Error: Can't write to %s\n", av[2]);
 			exit(99);
 		}
-	}
-	if (f1r  == -1)
-	{
-		dprintf(STDERR_FILENO, "Error: Can't read from file %s\n", av[1]);
-		exit(98);
 	}
 	fc1 = close(fp1);
 	if (fc1 == -1)
