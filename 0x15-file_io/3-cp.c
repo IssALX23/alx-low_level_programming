@@ -1,5 +1,26 @@
 #include "main.h"
 /**
+ * print_error - prints error message
+ * @file_from: fp1
+ * @file_to: fp2
+ * @av: argument array
+ *
+ * Return: void
+ */
+void print_error(int file_from, int file_to, char *av[])
+{
+	if (file_from == -1)
+	{
+		dprintf(STDERR_FILENO, "Error: Can't read from file %s\n", av[1]);
+		exit(98);
+	}
+	if (file_to == -1)
+	{
+		dprintf(STDERR_FILENO, "Error: Can't write to %s\n", av[2]);
+		exit(98);
+	}
+}
+/**
  * main - copies the content of a file to another file
  * @ac: counter of arguments
  * @av: array of arguments
@@ -18,17 +39,8 @@ int main(int ac, char *av[])
 		exit(97);
 	}
 	fp1 = open(av[1], O_RDONLY);
-	if (fp1 == -1)/* if file_from does not exist */
-	{
-		dprintf(STDERR_FILENO, "Error: Can't read from file %s\n", av[1]);
-		exit(98);
-	}
 	fp2 = open(av[2], O_WRONLY | O_CREAT | O_TRUNC, 0664);
-	if (fp2 == -1)
-	{
-		dprintf(STDERR_FILENO, "Error: Can't write to %s\n", av[2]);
-		exit(99);
-	}
+	print_error(fp1, fp2, av);/* if file_from does not exist */
 	while ((f1r = read(fp1, buffer, sizeof(buffer))) > 0)
 	{
 		f2w = write(fp2, buffer, f1r);
@@ -55,6 +67,5 @@ int main(int ac, char *av[])
 		dprintf(STDERR_FILENO, "Error: Can't close fd %d\n", fp2);
 		exit(100);
 	}
-
 	return (0);
 }
