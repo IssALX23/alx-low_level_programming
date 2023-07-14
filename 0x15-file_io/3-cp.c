@@ -47,13 +47,13 @@ int main(int ac, char *av[])
 	if (fc1 == -1)
 	{
 		dprintf(STDERR_FILENO, "Error: Can't close fd %d\n", fp1);
-		exit(99);
+		exit(100);
 	}
 	fc2 = close(fp2);
 	if (fc2 == -1)
 	{
 		dprintf(STDERR_FILENO, "Error: Can't close fd %d\n", fp2);
-		exit(99);
+		exit(100);
 	}
 
 	return (0);
