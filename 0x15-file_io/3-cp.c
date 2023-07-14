@@ -12,7 +12,7 @@ int main(int ac, char *av[])
 
 	if (ac != 3)/* if wrong number of arguments */
 	{
-		w_err = write(STDERR_FILENO, "Usage: cp file_from file_to", 27);
+		w_err = write(STDERR_FILENO, "Usage: cp file_from file_to\n", 28);
 		if (w_err == -1)
 			return (-1);
 		exit(97);
