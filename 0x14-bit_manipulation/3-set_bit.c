@@ -1,6 +1,6 @@
 #include "main.h"
 /**
- * set_bit : sets the value of a bit to 1 at a given index
+ * set_bit - sets the value of a bit to 1 at a given index
  * @n: pointer to integer
  * @index: integer
  *
@@ -13,7 +13,7 @@ int set_bit(unsigned long int *n, unsigned int index)
 
 	if (x < 0 || x > BITS)
 		return (-1);
-	*n =*n | (1 << index);/*update value of n*/
+	*n = *n | (1 << index);/*update value of n*/
 
 	return (1);
 }

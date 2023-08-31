@@ -44,14 +44,14 @@ unsigned int binary_to_uint(const char *b)
 {
 	int i = 0;
 	unsigned int new_b = 0, len = 0, power = 0;
-	
+
 	if (!b)
 		return (0);
 	len = _strlen_recursion(b);
 	for (i = len - 1 ; i >= 0 ; i--)
 	{
-		if (b[i]!= '0' && b[i] != '1')
-                	return (0);
+		if (b[i] != '0' && b[i] != '1')
+			return (0);
 		if (b[i] == '1')
 			new_b += _pow_recursion(2, power);
 		power++;
