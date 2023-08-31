@@ -34,7 +34,7 @@ int _pow_recursion(int x, int y)
 
 	return (0);
 }
-/*
+/**
  * binary_to_uint - converts a binary number to an unsigned int
  * @b: pointer to string
  *
