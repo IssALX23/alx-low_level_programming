@@ -7,7 +7,7 @@
  */
 void exit_usage(void)
 {
-	dprintf(stderr, "Usage: cp file_from file_to\n");
+	dprintf(2, "Usage: cp file_from file_to\n");
 	exit(97);
 }
 /**
@@ -18,7 +18,7 @@ void exit_usage(void)
  */
 void exit_read(char *str)
 {
-	dprintf(stderr, "Error: Can't read from file %s\n", str);
+	dprintf(2, "Error: Can't read from file %s\n", str);
 	exit(98);
 }
 /**
@@ -29,7 +29,7 @@ void exit_read(char *str)
  */
 void exit_write(char *str)
 {
-	dprintf(stderr, "Error: Can't write to %s\n", str);
+	dprintf(2, "Error: Can't write to %s\n", str);
 	exit(99);
 }
 /**
@@ -67,13 +67,13 @@ int main(int ac, char *av[])
 	c_from = close(fp_from);
 	if (c_from == -1)
 	{
-		dprintf(stderr, "Error: Can't close fd %d\n", fp_from);
+		dprintf(2, "Error: Can't close fd %d\n", fp_from);
 		exit(100);
 	}
 	c_to = close(fp_to);
 	if (c_to == -1)
 	{
-		dprintf(stderr, "Error: Can't close fd %d\n", fp_to);
+		dprintf(2, "Error: Can't close fd %d\n", fp_to);
 		exit(100);
 	}
 	return (0);
