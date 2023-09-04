@@ -1,7 +1,6 @@
 #include "main.h"
 /**
- * exit_usage - prints error message when number of
- * argument is not the correct one
+ * exit_usage - prints error message when wrong args number
  *
  * Return: void
  */
