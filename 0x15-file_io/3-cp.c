@@ -42,7 +42,7 @@ void exit_write(char *str)
 int main(int ac, char *av[])
 {
 	int fp_from, fp_to, c_from, c_to, w_to, r_from;
-	char buffer[1024];
+	char buffer[1025];
 
 	if (ac != 3)
 		exit_usage();
@@ -55,7 +55,7 @@ int main(int ac, char *av[])
 	if (fp_to == -1)
 		exit_write(av[2]);
 
-	while ((r_from = read(fp_from, buffer, 1024)) != 0)
+	while ((r_from = read(fp_from, buffer, sizeof(buffer))) > 0)
 	{
 		if (r_from == -1)
 			exit_read(av[1]);
