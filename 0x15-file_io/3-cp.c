@@ -32,6 +32,17 @@ void exit_write(char *str)
 	exit(99);
 }
 /**
+ * exit_close - prints error message when closing failed
+ * @fp: file pointer
+ *
+ * Return: void
+ */
+void exit_close(int fp)
+{
+	fprintf(stderr, "Error: Can't close fd %d\n", fp);
+	exit(100);
+}
+/**
  * main - check the code
  * @ac: counter of args
  * @av: array of args
@@ -60,20 +71,18 @@ int main(int ac, char *av[])
 			exit_read(av[1]);
 		w_to = write(fp_to, buffer, r_from);
 		if (w_to == -1)
+		{
+			exit_close(fp_from);
+			exit_close(fp_to);
 			exit_write(av[2]);
+		}
 	}
 
 	c_from = close(fp_from);
 	if (c_from == -1)
-	{
-		dprintf(2, "Error: Can't close fd %d\n", fp_from);
-		exit(100);
-	}
+		exit_close(fp_from);
 	c_to = close(fp_to);
 	if (c_to == -1)
-	{
-		dprintf(2, "Error: Can't close fd %d\n", fp_to);
-		exit(100);
-	}
+		exit_close(fp_to);
 	return (0);
 }
