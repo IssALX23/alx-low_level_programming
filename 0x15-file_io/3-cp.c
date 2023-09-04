@@ -9,7 +9,7 @@
 int main(int ac, char *av[])
 {
 	int fp_from, fp_to, c_from, c_to, w_to, r_from;
-	char *buffer[1024];
+	char buffer[1024];
 
 	if (ac != 3)
 	{
@@ -30,7 +30,7 @@ int main(int ac, char *av[])
 	}
 	while ((r_from = read(fp_from, buffer, 1024)))
 	{
-		w_to = write(fp_to, buffer, 1024);
+		w_to = write(fp_to, buffer, r_from);
 		if (w_to == -1)
 		{
 			fprintf(stderr, "Error: Can't write to %s\n", av[2]);
