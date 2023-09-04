@@ -66,7 +66,7 @@ int main(int ac, char *av[])
 	if (fp_to == -1)
 		exit_write(av[2]);
 
-	while ((r_from = read(fp_from, buffer, 1024)))
+	while ((r_from = read(fp_from, buffer, 1024)) != 0)
 	{
 		if (r_from == -1)
 			exit_read(av[1]);
