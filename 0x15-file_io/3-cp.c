@@ -72,8 +72,12 @@ int main(int ac, char *av[])
 		w_to = write(fp_to, buffer, r_from);
 		if (w_to == -1)
 		{
-			exit_close(fp_from);
-			exit_close(fp_to);
+			c_from = close(fp_from);
+			if (c_from == -1)
+				exit_close(fp_from);
+			c_to = close(fp_to);
+			if (c_to == -1)
+				exit_close(fp_to);
 			exit_write(av[2]);
 		}
 	}
