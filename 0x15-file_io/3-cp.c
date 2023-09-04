@@ -8,7 +8,7 @@
  */
 int main(int ac, char *av[])
 {
-	int fp_from, fp_to, c_from, c_to, w_to;
+	int fp_from, fp_to, c_from, c_to, w_to, r_from;
 	char *buffer[1024];
 
 	if (ac != 3)
@@ -28,7 +28,7 @@ int main(int ac, char *av[])
 		fprintf(stderr, "%s %d\n", "Error: Can't write to ", *av[2]);
 		exit(99);
 	}
-	while (read(fp_from, buffer, 1024))
+	while ((r_from = read(fp_from, buffer, 1024)))
 	{
 		w_to = write(fp_to, buffer, 1024);
 		if (w_to == -1)
@@ -36,6 +36,11 @@ int main(int ac, char *av[])
 			fprintf(stderr, "%s %d\n", "Error: Can't write to ", *av[2]);
 			exit(99);
 		}
+	}
+	if (r_from == -1)
+	{
+		fprintf(stderr, "%s %d\n", "Error: Can't read from file ", *av[1]);
+		exit(98);
 	}
 	c_from = close(fp_from);
 	if (c_from == -1)
