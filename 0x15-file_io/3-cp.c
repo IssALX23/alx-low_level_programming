@@ -17,7 +17,7 @@ void exit_usage(void)
  */
 void exit_read(char *str)
 {
-	dprintf(2, "Error: Can't read from file %s\n98\n", str);
+	dprintf(STDERR_FILENO, "Error: Can't read from file %s\n98\n", str);
 	exit(98);
 }
 /**
@@ -60,10 +60,7 @@ int main(int ac, char *av[])
 
 	fp_from = open(av[1], O_RDONLY);
 	if (fp_from == -1)
-	{
-		dprintf(STDERR_FILENO, "Error: Can't read from file %s\n", av[1]);
-		exit(98);
-	}
+		exit_read(av[1]);
 	fp_to = open(av[2], O_WRONLY | O_CREAT | O_TRUNC, perms);
 	if (fp_to == -1)
 		exit_write(av[2]);
@@ -71,10 +68,7 @@ int main(int ac, char *av[])
 	while ((r_from = read(fp_from, buffer, sizeof(buffer))))
 	{
 		if (r_from == -1)
-		{
-			dprintf(STDERR_FILENO, "Error: Can't read from file %s\n", av[1]);
-			exit(98);
-		}
+			exit_read(av[1]);
 		w_to = write(fp_to, buffer, r_from);
 		if (w_to == -1)
 		{
