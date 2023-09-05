@@ -53,6 +53,7 @@ int main(int ac, char *av[])
 {
 	int fp_from, fp_to, c_from, c_to, w_to, r_from;
 	char buffer[1024];
+	mode_t perms = S_IWUSR | S_IRUSR | S_IROTH | S_IRGRP | S_IWGRP;
 
 	if (ac != 3)
 		exit_usage();
@@ -63,7 +64,7 @@ int main(int ac, char *av[])
 		dprintf(2, "Error: Can't read from file %s\n", av[1]);
 		exit(98);
 	}
-	fp_to = open(av[2], O_WRONLY | O_CREAT | O_TRUNC, 0664);
+	fp_to = open(av[2], O_WRONLY | O_CREAT | O_TRUNC, perms);
 	if (fp_to == -1)
 		exit_write(av[2]);
 
