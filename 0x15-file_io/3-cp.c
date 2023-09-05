@@ -17,7 +17,7 @@ void exit_usage(void)
  */
 void exit_read(char *str)
 {
-	dprintf(STDERR_FILENO, "Error: Can't read from file %s\n98\n", str);
+	dprintf(STDERR_FILENO, "Error: Can't read from file %s\n", str);
 	exit(98);
 }
 /**
