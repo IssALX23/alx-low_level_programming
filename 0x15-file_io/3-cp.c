@@ -17,8 +17,7 @@ void exit_usage(void)
  */
 void exit_read(char *str)
 {
-	dprintf(2, "Error: Can't read from file %s\n", str);
-	exit(98);
+	dprintf(2, "Error: Can't read from file %s\n", str), exit(98);
 }
 /**
  * exit_write - prints error message when writing in failed
