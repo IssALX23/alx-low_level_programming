@@ -58,8 +58,10 @@ int main(int ac, char *av[])
 
 	fp_from = open(av[1], O_RDONLY);
 	if (fp_from == -1)
-		exit_read(av[1]);
-
+	{
+		dprintf(2, "Error: Can't read from file %s\n", av[1]);
+		exit(98);
+	}
 	fp_to = open(av[2], O_WRONLY | O_CREAT | O_TRUNC, 0664);
 	if (fp_to == -1)
 		exit_write(av[2]);
