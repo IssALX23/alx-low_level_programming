@@ -60,7 +60,7 @@ int main(int ac, char *av[])
 	fp_from = open(av[1], O_RDONLY);
 	if (fp_from == -1)
 	{
-		dprintf(2, "Error: Can't read from file %s\n98\n", av[1]);
+		dprintf(2, "Error: Can't read from file %s\n", av[1]);
 		exit(98);
 	}
 	fp_to = open(av[2], O_WRONLY | O_CREAT | O_TRUNC, 0664);
@@ -70,7 +70,10 @@ int main(int ac, char *av[])
 	while ((r_from = read(fp_from, buffer, sizeof(buffer))))
 	{
 		if (r_from == -1)
-			exit_read(av[1]);
+		{
+			dprintf(2, "Error: Can't read from file %s\n", av[1]);
+			exit(98);
+		}
 		w_to = write(fp_to, buffer, r_from);
 		if (w_to == -1)
 		{
