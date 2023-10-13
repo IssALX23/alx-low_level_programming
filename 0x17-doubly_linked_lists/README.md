@@ -12,6 +12,8 @@ Task 4 Write a function that frees a dlistint_t list.
 
 Task 5 Write a function that returns the nth node of a dlistint_t linked list.
 
+Task 6 Write a function that returns the sum of all the data (n) of a dlistint_t linked list.
+
 
 
 
