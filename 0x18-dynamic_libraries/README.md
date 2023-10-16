@@ -6,4 +6,5 @@
 
 	Task 2 Create a dynamic library that contains C functions that can be called from Python.
 
+	Task 4 Code injection: Win the Giga Millions!
 
