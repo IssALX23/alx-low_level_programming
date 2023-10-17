@@ -3,14 +3,24 @@
 #include <ctype.h>
 #include <stddef.h>
 /**
- * main - entry point
+ * _puts - entry point
  *
- * Description: C program using puts function
+ * Description: prints a string, followed by a new line, to stdout
+ * @str:  input string
  *
- * Return: always 0 successful
-*/
-int main(void)
+ * Return: void
+ */
+void _puts(char *str)
 {
-	puts("\"Programming is like building a multilingual puzzle");
-	return (0);
+	int i, count = 0;
+
+	while (str[count] != 0)
+	{
+		count++;
+	}
+	for (i = 0 ; i < count ; i++)
+	{
+		_putchar(str[i]);
+	}
+	_putchar('\n');
 }
