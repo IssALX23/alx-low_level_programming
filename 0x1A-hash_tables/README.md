@@ -9,3 +9,7 @@ A hash table is a data structure that associates keys with values by utilizing t
 	Task 2:
 		Write a function that gives you the index of a key.
 		(using the division methon "modulo size")
+	Task 3:
+		Write a function that adds an element to the hash table.
+		(In case of collision, add the new node at the beginning of the list)
+
